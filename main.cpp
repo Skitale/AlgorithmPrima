@@ -1,11 +1,11 @@
 #include "AlgPrima.h"
 
-int main(int argc, char* argv[]){
+int main(){
 
 	//	srand(time(NULL));
 	//int n=10000; //число вершин графа
 	int n;
-	cin << n
+	std::cin >> n;
 	int m = 2 * n;
 	double tlin1, tlin2, dtlin;
 
@@ -22,12 +22,15 @@ int main(int argc, char* argv[]){
 
 
 	GenerateGraph(n, m, vA, vB, Weight);
-	for (int i = 0; i<m; i++)
-	{
-		int va, vb, w;
-		va = vA[i];
-		vb = vB[i];
-		w = Weight[i];
+	if (n < 10){
+		for (int i = 0; i < m; i++)
+		{
+			int va, vb, w;
+			va = vA[i];
+			vb = vB[i];
+			w = Weight[i];
+			printf("the edge(%d,%d) with weight %d\n", va, vb, w);
+		}
 	}
 
 
@@ -63,11 +66,20 @@ int main(int argc, char* argv[]){
 	}
 
 
+	cout << endl;
+	if (n < 15){
+		for (int i = 0; i < k; i++)
+		{
+			int va, vb, w;
+			va = ResLin_vA[i];
+			vb = ResLin_vB[i];
+			w = ResLin_Weight[i];
+			printf("the MST edge(%d,%d) with weight %d\n", va, vb, w);
+		}
+	}
+
 
 	
-
-
-
 	//Free memory
 	delete ResLin_vA;
 	delete ResLin_vB;
@@ -77,6 +89,6 @@ int main(int argc, char* argv[]){
 	delete vB;
 	delete Weight;
 
-
+	system("pause");
 	return 0;
 }
